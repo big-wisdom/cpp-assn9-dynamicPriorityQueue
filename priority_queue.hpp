@@ -110,7 +110,7 @@ namespace usu
                 // Start at end of heap
                 // queue.insert(queue.end(), std::make_pair(value, priority));
                 // mypair* m = new mypair(value, priority);
-                queue.insert(queue.end(), priority_type(value, priority));
+                queue.insert(queue.end(), priority_item(value, priority));
 
                 // Now sift up until curr's parent's key > curr's key
                 while ((curr != 0) && (compareTo(static_cast<int>(curr), parent(curr))))
@@ -120,7 +120,7 @@ namespace usu
                 }
             }
 
-            priority_type dequeue()
+            priority_item dequeue()
             {
                 if (queue.size() == 0)
                 { // removing from empty heap
