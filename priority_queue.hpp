@@ -15,7 +15,7 @@ namespace usu
             {
                 priority_item(R v, priority_type r) : 
                     value(v),
-                    priority_type(r)
+                    priority(r)
                 {
                 };
                 priority_item() :
@@ -50,8 +50,8 @@ namespace usu
                     };
 
                     iterator(size_t pos, std::vector<priority_item>* ptr) :
-                        m_pos(pos),
-                        m_data(ptr)
+                        m_data(ptr),
+                        m_pos(pos)
                     {
                     };
 
@@ -69,14 +69,15 @@ namespace usu
                         priority_item* ptr = new priority_item(p.value, p.priority);
                         return ptr;
                     }
+                    size_t getPosition() { return m_pos; }
                     priority_item& operator*()
                     {
                         return (*m_data)[m_pos];
                     }
 
                 private:
-                    size_t m_pos;
                     std::vector<priority_item>* m_data;
+                    size_t m_pos;
             };
 
             priority_queue() : queue({}) {};
