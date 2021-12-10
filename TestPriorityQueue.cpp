@@ -3,6 +3,7 @@
 
 #include "gtest/gtest.h"
 #include <string>
+#include <iostream>
 
 // Set this to false to remove the debugging cout statements
 constexpr bool DEBUG_PRINT = true;
@@ -84,6 +85,8 @@ TEST(MemberMethods, Misc)
     EXPECT_TRUE(pq.find("a") == pq.end());
 
     pq.enqueue("a", 1);
+    std::cout << "find(a): " << pq.find("a")->value << ":" << std::endl;
+    std::cout << "begin(): " << pq.begin()->value << ":" << std::endl;
     EXPECT_TRUE(pq.find("a") == pq.begin());
     EXPECT_EQ((*pq.find("a")).value, "a");
     EXPECT_EQ((*pq.find("a")).priority, 1u);

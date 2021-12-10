@@ -62,7 +62,7 @@ namespace usu
                     iterator operator++();    // incrementable e.g., ++r
                     iterator operator++(int);
                     bool operator==(const iterator& rhs) { return m_pos == rhs.m_pos && m_data == rhs.m_data; }
-                    bool operator!=(const iterator& rhs) { return m_pos != rhs.m_pos && m_data != m_data; }
+                    bool operator!=(const iterator& rhs) { return m_pos != rhs.m_pos || m_data != rhs.m_data; }
                     priority_item* operator->()
                     {
                         priority_item p = (*m_data)[m_pos];
@@ -185,7 +185,7 @@ namespace usu
 
             void siftdown(int pos)
             {
-                if((pos < 0) || (static_cast<size_t>(pos) <= queue.size()))
+                if((pos < 0) || (static_cast<size_t>(pos) >= queue.size()))
                 {
                     return;
                 }
